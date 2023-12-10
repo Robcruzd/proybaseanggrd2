@@ -15,7 +15,6 @@ pluginManagement {
         id 'org.sonarqube' version "${sonarqubePluginVersion}"
         id "io.spring.nohttp" version "${noHttpCheckstyleVersion}"
         id 'com.github.andygoossens.gradle-modernizer-plugin' version "${modernizerPluginVersion}"
-        id "io.gatling.gradle" version "${gatlingPluginVersion}"
         //jhipster-needle-gradle-plugin-management-plugins - JHipster will add additional entries here
     }
 }

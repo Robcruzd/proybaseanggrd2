@@ -7,7 +7,7 @@
     "cacheProvider": "ehcache",
     "clientFramework": "angular",
     "clientTheme": "none",
-    "creationTimestamp": 1701844937344,
+    "creationTimestamp": 1702245877875,
     "databaseType": "sql",
     "devDatabaseType": "postgresql",
     "devServerPort": 4200,
@@ -21,7 +21,7 @@
     "gradleEnterpriseHost": null,
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.9.3",
-    "jwtSecretKey": "OTlhODI4MWJlMTIyZmM3YWEwYTU3MjhjZWRlNjRmODU2MWM5MmM1YzJiZmQ0MGFiNmMwMmU1MGU5MWQ1MWNhYjc4ZmI5MTEyNWQ3ODE0Y2RjMmU2M2IxYjAzMTBkYjExOWI4MmFjZGYzMTA5NTQ3NjM4OGIxOTRhN2RkNzFmYjM=",
+    "jwtSecretKey": "Mjg1OTUyMDI5NTI3NGY3Y2M0NGVmMjRlNGEzOTI4NTM2MGE1M2RlMzQxYjk4MTM4NDBhOWExOTVkMGRmNjQ3MzMyNjE1YTdkMWM0MjAxMmZkZmE4ZDc5YmU3OTVlMzdlODRkZGExODExMDk5OWIzN2EyNDkyYjYzMWY3ZGU4MGU=",
     "languages": ["en", "fr"],
     "messageBroker": false,
     "microfrontend": false,
@@ -40,7 +40,7 @@
     "skipClient": false,
     "skipFakeData": false,
     "skipUserManagement": false,
-    "testFrameworks": ["cypress", "gatling", "cucumber"],
+    "testFrameworks": [],
     "websocket": false,
     "withAdminUi": true
   }

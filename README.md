@@ -162,25 +162,6 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 npm test
 ```
 
-UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
-and can be run by starting Spring Boot in one terminal (`./gradlew bootRun`) and running the tests (`npm run e2e`) in a second one.
-
-#### Lighthouse audits
-
-You can execute automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by running `npm run e2e:cypress:audits`.
-You should only run the audits when your application is packaged with the production profile.
-The lighthouse report is created in `build/cypress/lhreport.html`
-
-### Other tests
-
-Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/java/gatling/simulations](src/test/java/gatling/simulations).
-
-You can execute all Gatling tests with
-
-```
-./gradlew gatlingRun.
-```
-
 For more information, refer to the [Running tests page][].
 
 ### Code quality
@@ -259,8 +240,6 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Webpack]: https://webpack.github.io/
 [BrowserSync]: https://www.browsersync.io/
 [Jest]: https://facebook.github.io/jest/
-[Cypress]: https://www.cypress.io/
 [Leaflet]: https://leafletjs.com/
 [DefinitelyTyped]: https://definitelytyped.org/
 [Angular CLI]: https://cli.angular.io/
-[Gatling]: https://gatling.io/

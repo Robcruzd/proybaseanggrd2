@@ -49,7 +49,6 @@ task integrationTest(type: Test) {
     description = "Execute integration tests."
     group = "verification"
     include "**/*IT*", "**/*IntTest*"
-    exclude "**/*CucumberIT*"
     testLogging {
         events 'FAILED', 'SKIPPED'
     }

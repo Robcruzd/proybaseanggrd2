@@ -21,7 +21,6 @@ plugins {
     id "org.sonarqube"
     id "io.spring.nohttp"
     id "com.github.andygoossens.gradle-modernizer-plugin"
-    id "io.gatling.gradle"
     //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
@@ -97,48 +96,12 @@ test {
     reports.html.enabled = false
 }
 
-sourceSets {
-    gatling {
-        java.srcDirs = ["src/test/java/gatling/simulations"]
-        resources.srcDirs = ["src/test/gatling/conf"]
-    }
-}
-
-gatling {
-    simulations = { include "**/*Test*.java" }
-}
-
 modernizer {
     failOnViolations = true
     includeTestClasses = true
 }
 
 
-
-task consoleLauncherTest(type: JavaExec) {
-    dependsOn(testClasses)
-    String cucumberReportsDir = file("$buildDir/reports/tests")
-    outputs.dir(reportsDir)
-    classpath = sourceSets["test"].runtimeClasspath
-    main = "org.junit.platform.console.ConsoleLauncher"
-    args("--scan-classpath")
-    args("--include-engine", "cucumber")
-    args("--reports-dir", cucumberReportsDir)
-}
-
-task cucumberTest(type: Test) {
-    dependsOn(consoleLauncherTest)
-    description = "Execute cucumber BDD tests."
-    group = "verification"
-    include "**/*CucumberIT*"
-
-    // uncomment if the tests reports are not generated
-    // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
-    // ignoreFailures true
-    reports.html.enabled = false
-}
-
-check.dependsOn cucumberTest
 
 check.dependsOn integrationTest
 task testReport(type: TestReport) {
@@ -149,11 +112,6 @@ task testReport(type: TestReport) {
 task integrationTestReport(type: TestReport) {
     destinationDir = file("$buildDir/reports/tests")
     reportOn integrationTest
-}
-
-task cucumberTestReport(type: TestReport) {
-    destinationDir = file("$buildDir/reports/tests")
-    reportOn cucumberTest
 }
 
 if (!project.hasProperty("runList")) {
@@ -290,12 +248,6 @@ dependencies {
     implementation "org.springframework.security:spring-security-data"
     implementation "io.micrometer:micrometer-registry-prometheus"
     implementation "io.dropwizard.metrics:metrics-core"
-    testImplementation "io.cucumber:cucumber-junit-platform-engine"
-    testImplementation "io.cucumber:cucumber-java"
-    testImplementation "io.cucumber:cucumber-spring"
-    testImplementation "org.junit.platform:junit-platform-console"
-    testImplementation "org.testng:testng"
-    testImplementation "io.gatling.highcharts:gatling-charts-highcharts:${gatlingVersion}"
     liquibaseRuntime sourceSets.main.compileClasspath
     liquibaseRuntime "org.liquibase.ext:liquibase-hibernate6:${liquibaseHibernate6Version}"
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
