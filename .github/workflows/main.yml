@@ -67,7 +67,8 @@ jobs:
   deploy:
     needs: deliver
     runs-on: ubuntu-latest
-    environment: ${{ secrets.AZURE_WEBAPP_NAME }}
+    environment: 
+      name: ${{ secrets.AZURE_WEBAPP_NAME }}
     steps:
       - name: Download Artifact
         uses: actions/download-artifact@v3
