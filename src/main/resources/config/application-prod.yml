@@ -35,7 +35,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://ec2-52-15-78-48.us-east-2.compute.amazonaws.com:5432/proybaseanggrd2
     username: postgres
-    password: proybaseanggrd2
+    password: Maldit4se4Rjave
     hikari:
       poolName: Hikari
       auto-commit: false
