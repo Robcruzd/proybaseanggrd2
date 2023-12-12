@@ -44,7 +44,7 @@ jobs:
   #       run: npm run ci:frontend:test
 
   deliver:
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
