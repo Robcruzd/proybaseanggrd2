@@ -57,12 +57,12 @@ jobs:
       - name: Package application
         run: npm run java:jar:prod
       - name: find package 
-        run: find / -name proybaseanggrd2*.jar
+        run: find / -name *.jar
       - name: Publish Artifact
         uses: actions/upload-artifact@v3
         with:
           name: drop
-          path: ${{ github.workspace }}/target/proybaseanggrd2*.jar
+          path: ${{ github.workspace }}/target/*.jar
 
   # deploy:
   #   needs: deliver
