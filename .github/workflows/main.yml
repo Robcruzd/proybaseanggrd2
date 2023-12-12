@@ -57,12 +57,12 @@ jobs:
       - name: Package application
         run: npm run java:jar:prod
       - name: find package 
-        run: find / -name *.jar
+        run: find ${{ github.workspace }}/build/libs/ -name *.jar
       - name: Publish Artifact
         uses: actions/upload-artifact@v3
         with:
           name: drop
-          path: ${{ github.workspace }}/target/*.jar
+          path: ${{ github.workspace }}/build/libs/*.jar
 
   # deploy:
   #   needs: deliver
