@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $DEPLOYMENT_APP_NAME
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $DEPLOYMENT_APP_NAME
+  template:
+    metadata:
+      labels:
+        app: $DEPLOYMENT_APP_NAME
+    spec:
+      containers:
+        - name: $CONTAINER_REGISTRY_NAME
+          image: $CONTAINER_REGISTRY/$IMAGE_REPOSITORY
+          ports:
+            - containerPort: 80
