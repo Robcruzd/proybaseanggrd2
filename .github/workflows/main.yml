@@ -54,29 +54,32 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17
-      - name: Login to Azure Container Registry
-        uses: azure/docker-login@v1
+      - name: Package application
+        run: npm run java:jar:prod
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v3
         with:
-          login-server: ${{ secrets.CONTAINER_REGISTRY }}
-          username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
-          password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-      - name: Permissions to mvnw
-        run: chmod +x gradlew
-      - name: Build and package the application
-        run: ./gradlew jib -Pprod -Djib.to.image=${{ secrets.CONTAINER_REGISTRY }}/${{ secrets.IMAGE_REPOSITORY }}:${{ env.TAG }}
+          name: drop
+          path: ${{ github.workspace }}/build/libs/*.jar
 
   deploy:
     needs: deliver
     runs-on: ubuntu-latest
+    environment: ${{ secrets.AZURE_WEBAPP_NAME }}
     steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: drop
       - name: Login Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.CREDS_AZURE_APP }}
-      - name: Azure Web App on Container Deploy
+      - name: Azure Web App Deploy proybaseanggrd2
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          images: ${{ secrets.CONTAINER_REGISTRY }}/${{ secrets.IMAGE_REPOSITORY }}:${{ env.TAG }}
+          package: proybaseanggrd2*.jar
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
       - name: Azure logout
         run: az logout
